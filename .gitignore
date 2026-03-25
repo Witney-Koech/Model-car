@@ -1,0 +1,35 @@
+# ROS 2 Build Folders
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+dist/
+*.egg
+
+# Gazebo
+*.log
+*.gzlog
+*.bag
+*.db3
+
+# IDEs
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+
+# Compiled binaries
+*.so
+*.a
+*.o
+*.pyc
+
+# Colcon
+.colcon/
