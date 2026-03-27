@@ -1,0 +1,459 @@
+<robot name="rover" version="1.0">
+  <joint name="BackLeftMotor_link_joint" type="fixed">
+    <origin rpy="1.57103 0.00000 0.00000" xyz="0.06461 -0.02565 -0.00216"/>
+    <parent link="Base_link"/>
+    <child link="BackLeftMotor_link"/>
+  </joint>
+  <joint name="BackLeftWheel_link_joint" type="continuous">
+    <limit effort="100.00000" velocity="0.17453"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00100 0.00002 0.03348"/>
+    <parent link="BackLeftMotor_link"/>
+    <child link="BackLeftWheel_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="Stand3_link_joint" type="fixed">
+    <origin rpy="1.57103 0.00000 0.00000" xyz="0.07877 -0.02500 -0.00201"/>
+    <parent link="Base_link"/>
+    <child link="Stand3_link"/>
+  </joint>
+  <joint name="Stand4_link_joint" type="fixed">
+    <origin rpy="1.57103 0.00000 0.00000" xyz="0.07877 0.02500 -0.00197"/>
+    <parent link="Base_link"/>
+    <child link="Stand4_link"/>
+  </joint>
+  <joint name="Stand5_link_joint" type="fixed">
+    <origin rpy="1.57103 0.00000 0.00000" xyz="0.03288 0.02499 0.02658"/>
+    <parent link="Base_link"/>
+    <child link="Stand5_link"/>
+  </joint>
+  <joint name="Stand6_link_joint" type="fixed">
+    <origin rpy="1.57103 0.00000 0.00000" xyz="0.03288 -0.02501 0.02637"/>
+    <parent link="Base_link"/>
+    <child link="Stand6_link"/>
+  </joint>
+  <joint name="Stand7_link_joint" type="fixed">
+    <origin rpy="1.57103 0.00000 0.00000" xyz="0.07877 -0.02501 0.02634"/>
+    <parent link="Base_link"/>
+    <child link="Stand7_link"/>
+  </joint>
+  <joint name="Stand9_link_joint" type="fixed">
+    <origin rpy="1.57103 0.00000 0.00000" xyz="0.07877 0.02499 0.02753"/>
+    <parent link="Base_link"/>
+    <child link="Stand9_link"/>
+  </joint>
+  <joint name="UpperBaseplate_link_joint" type="fixed">
+    <origin rpy="-3.14135 0.00000 0.00000" xyz="0.05528 -0.00001 0.03818"/>
+    <parent link="Base_link"/>
+    <child link="UpperBaseplate_link"/>
+  </joint>
+  <joint name="BackRightMotor_link_joint" type="fixed">
+    <origin rpy="1.57103 0.00000 0.00000" xyz="0.06461 0.02565 -0.00201"/>
+    <parent link="Base_link"/>
+    <child link="BackRightMotor_link"/>
+  </joint>
+  <joint name="BackRightWheel_link_joint" type="continuous">
+    <limit effort="100.00000" velocity="0.17453"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00104 0.00001 -0.03361"/>
+    <parent link="BackRightMotor_link"/>
+    <child link="BackRightWheel_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="FrontLeftMotor_link_joint" type="fixed">
+    <origin rpy="1.57103 0.00000 0.00000" xyz="-0.06794 -0.02435 -0.00231"/>
+    <parent link="Base_link"/>
+    <child link="FrontLeftMotor_link"/>
+  </joint>
+  <joint name="FrontLeftWheel_link_joint" type="continuous">
+    <limit effort="100.00000" velocity="0.17453"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00103 0.00002 0.03478"/>
+    <parent link="FrontLeftMotor_link"/>
+    <child link="FrontLeftWheel_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="FrontRightMotor_link_joint" type="fixed">
+    <origin rpy="1.57103 0.00000 0.00000" xyz="-0.06794 0.02565 -0.00206"/>
+    <parent link="Base_link"/>
+    <child link="FrontRightMotor_link"/>
+  </joint>
+  <joint name="FrontRightWheel_link_joint" type="continuous">
+    <limit effort="100.00000" velocity="0.17453"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00100 0.00001 -0.03361"/>
+    <parent link="FrontRightMotor_link"/>
+    <child link="FrontRightWheel_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="Stand1_link_joint" type="fixed">
+    <origin rpy="1.57103 0.00000 0.00000" xyz="-0.08265 0.02500 -0.00197"/>
+    <parent link="Base_link"/>
+    <child link="Stand1_link"/>
+  </joint>
+  <joint name="Stand2_link_joint" type="fixed">
+    <origin rpy="1.57103 0.00000 0.00000" xyz="-0.08265 -0.02500 -0.00199"/>
+    <parent link="Base_link"/>
+    <child link="Stand2_link"/>
+  </joint>
+  <link name="Base_link">
+    <collision name="Base_collision">
+      <origin rpy="-1.57033 0.00000 0.00000" xyz="0.00000 0.00000 -0.00380"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00259" ixy="-0.00003" ixz="-0.00000" iyy="0.01017" iyz="0.00000" izz="0.00908"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00199 0.00000 -0.00208"/>
+      <mass value="5.00000"/>
+    </inertial>
+    <visual name="Base">
+      <material name="Silver"/>
+      <origin rpy="1.57103 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="
+      /meshes/stl/Assem1.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="BackLeftMotor_link">
+    <collision name="BackLeftMotor_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.05000 -0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.006.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00012" ixy="0.00000" ixz="0.00004" iyy="0.00223" iyz="-0.00000" izz="0.00221"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.02162 -0.00000 -0.00064"/>
+      <mass value="2.00000"/>
+    </inertial>
+    <visual name="BackLeftMotor">
+      <material name="Silver"/>
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.05000 -0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.006.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="Stand2_link">
+    <collision name="Stand2_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.018.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00003" ixy="0.00000" ixz="0.00000" iyy="0.00000" iyz="-0.00000" izz="0.00003"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <mass value="0.50000"/>
+    </inertial>
+    <visual name="Stand2">
+      <material name="Silver"/>
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.018.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="Stand3_link">
+    <collision name="Stand3_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.019.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00003" ixy="-0.00000" ixz="0.00000" iyy="0.00000" iyz="-0.00000" izz="0.00003"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+      <mass value="0.50000"/>
+    </inertial>
+    <visual name="Stand3">
+      <material name="Silver"/>
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.019.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="Stand4_link">
+    <collision name="Stand4_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.020.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00003" ixy="-0.00000" ixz="-0.00000" iyy="0.00000" iyz="0.00000" izz="0.00003"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 -0.00000"/>
+      <mass value="0.50000"/>
+    </inertial>
+    <visual name="Stand4">
+      <material name="Silver"/>
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.020.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="Stand5_link">
+    <collision name="Stand5_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.022.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00001" ixy="-0.00000" ixz="0.00000" iyy="0.00000" iyz="-0.00000" izz="0.00001"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <mass value="0.50000"/>
+    </inertial>
+    <visual name="Stand5">
+      <material name="Silver"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.022.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="Stand6_link">
+    <collision name="Stand6_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.023.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00001" ixy="-0.00000" ixz="-0.00000" iyy="0.00000" iyz="-0.00000" izz="0.00001"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <mass value="0.50000"/>
+    </inertial>
+    <visual name="Stand6">
+      <material name="Silver"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.023.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="Stand7_link">
+    <collision name="Stand7_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.024.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00001" ixy="0.00000" ixz="0.00000" iyy="0.00000" iyz="0.00000" izz="0.00001"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 -0.00000"/>
+      <mass value="0.50000"/>
+    </inertial>
+    <visual name="Stand7">
+      <material name="Silver"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.024.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="Stand9_link">
+    <collision name="Stand9_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.025.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00001" ixy="-0.00000" ixz="0.00000" iyy="0.00000" iyz="0.00000" izz="0.00001"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>
+      <mass value="0.50000"/>
+    </inertial>
+    <visual name="Stand9">
+      <material name="Silver"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.025.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="UpperBaseplate_link">
+    <collision name="UpperBaseplate_collision">
+      <origin rpy="-1.57081 0.00000 0.00000" xyz="-0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.021.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00032" ixy="0.00000" ixz="0.00000" iyy="0.00048" iyz="-0.00000" izz="0.00017"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00334 0.00000 0.00000"/>
+      <mass value="0.50000"/>
+    </inertial>
+    <visual name="UpperBaseplate">
+      <material name="Silver"/>
+      <origin rpy="-1.57080 0.00000 0.00000" xyz="-0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.021.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="BackLeftWheel_link">
+    <collision name="BackLeftWheel_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.014.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00029" ixy="0.00000" ixz="-0.00000" iyy="0.00051" iyz="0.00000" izz="0.00029"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00001 0.00013 -0.00048"/>
+      <mass value="1.00000"/>
+    </inertial>
+    <visual name="BackLeftWheel">
+      <material name="Silver"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00015 -0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.014.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="BackRightMotor_link">
+    <collision name="BackRightMotor_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.05000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.003.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00012" ixy="-0.00000" ixz="-0.00004" iyy="0.00223" iyz="-0.00000" izz="0.00221"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.02162 0.00000 0.00064"/>
+      <mass value="2.00000"/>
+    </inertial>
+    <visual name="BackRightMotor">
+      <material name="Silver"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.05000 -0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.003.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="BackRightWheel_link">
+    <collision name="BackRightWheel_collision">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.015.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00029" ixy="-0.00000" ixz="-0.00000" iyy="0.00029" iyz="0.00000" izz="0.00051"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00002 -0.00001 0.00048"/>
+      <mass value="1.00000"/>
+    </inertial>
+    <visual name="BackRightWheel">
+      <material name="Silver"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.015.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="FrontLeftMotor_link">
+    <collision name="FrontLeftMotor_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.05000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.009.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00012" ixy="-0.00000" ixz="0.00004" iyy="0.00223" iyz="0.00000" izz="0.00221"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.02162 -0.00000 0.00064"/>
+      <mass value="2.00000"/>
+    </inertial>
+    <visual name="FrontLeftMotor">
+      <material name="Silver"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.05000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.009.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="FrontLeftWheel_link">
+    <collision name="FrontLeftWheel_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.013.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00029" ixy="-0.00000" ixz="-0.00000" iyy="0.00029" iyz="-0.00000" izz="0.00051"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00001 -0.00002 -0.00048"/>
+      <mass value="1.00000"/>
+    </inertial>
+    <visual name="FrontLeftWheel">
+      <material name="Silver"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.013.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="FrontRightMotor_link">
+    <collision name="FrontRightMotor_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.05000 -0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.012.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00012" ixy="-0.00000" ixz="0.00004" iyy="0.00223" iyz="0.00000" izz="0.00221"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.02162 -0.00000 0.00064"/>
+      <mass value="2.00000"/>
+    </inertial>
+    <visual name="FrontRightMotor">
+      <material name="Silver"/>
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="0.05000 -0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.012.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="FrontRightWheel_link">
+    <collision name="FrontRightWheel_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.016.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00029" ixy="-0.00000" ixz="-0.00000" iyy="0.00029" iyz="0.00000" izz="0.00051"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00002 -0.00001 0.00048"/>
+      <mass value="1.00000"/>
+    </inertial>
+    <visual name="FrontRightWheel">
+      <material name="Silver"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.016.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="Stand1_link">
+    <collision name="Stand1_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.017.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00003" ixy="0.00000" ixz="0.00000" iyy="0.00000" iyz="-0.00000" izz="0.00003"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>
+      <mass value="0.50000"/>
+    </inertial>
+    <visual name="Stand1">
+      <material name="Silver"/>
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.017.stl" scale="0.00100 0.00100 0.00100"/>
+      </geometry>
+    </visual>
+  </link>
+  <material name="Silver">
+    <color rgba="0.80000 0.80000 0.80000 1.00000"/>
+  </material>
+</robot>

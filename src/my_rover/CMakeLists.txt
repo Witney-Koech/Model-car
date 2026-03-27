@@ -24,11 +24,14 @@ if(BUILD_TESTING)
 endif()
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME})
-  install(DIRECTORY config
+install(DIRECTORY config
    DESTINATION share/${PROJECT_NAME})
-   install(DIRECTORY include
+install(DIRECTORY include
    DESTINATION share/${PROJECT_NAME})
-   install(DIRECTORY include
+install(DIRECTORY urdf
    DESTINATION share/${PROJECT_NAME})
-
+install(DIRECTORY meshes
+   DESTINATION share/${PROJECT_NAME})
+install(DIRECTORY world
+   DESTINATION share/${PROJECT_NAME})
 ament_package()
