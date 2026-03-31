@@ -108,8 +108,7 @@
       <material name="Silver"/>
       <origin rpy="1.57103 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
       <geometry>
-        <mesh filename="
-      /meshes/stl/Assem1.stl" scale="0.00100 0.00100 0.00100"/>
+        <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.stl" scale="0.00100 0.00100 0.00100"/>
       </geometry>
     </visual>
   </link>
