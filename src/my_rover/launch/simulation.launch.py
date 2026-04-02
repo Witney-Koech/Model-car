@@ -1,7 +1,7 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
+from launch.actions import IncludeLaunchDescription, TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 
@@ -10,14 +10,13 @@ def generate_launch_description():
 
     package_name = 'my_rover'
 
-    # World file path
     world_file = os.path.join(
         get_package_share_directory(package_name),
         'world',
         'world.sdf'
     )
 
-    # Robot State Publisher launch
+    # Robot State Publisher
     rsp = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(
@@ -29,7 +28,7 @@ def generate_launch_description():
         launch_arguments={'use_sim_time': 'true'}.items()
     )
 
-    # Gazebo launch
+    # Gazebo
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(
@@ -41,26 +40,35 @@ def generate_launch_description():
         launch_arguments={'gz_args': ['-r -v 4 ', world_file]}.items()
     )
 
-    # Spawn robot in Gazebo
-    spawn_entity = Node(
-        package='ros_gz_sim',
-        executable='create',
-        arguments=[
-            '-topic', 'robot_description',
-            '-name', 'my_rover',
-            '-z', '0.3'
-        ],
-        output='screen'
+    # Spawn robot (DELAYED)
+    spawn_entity = TimerAction(
+        period=5.0,   # wait 5 seconds
+        actions=[
+            Node(
+                package='ros_gz_sim',
+                executable='create',
+                arguments=[
+                    '-topic', 'robot_description',
+                    '-name', 'my_rover',
+                    '-z', '0.3'
+                ],
+                output='screen'
+            )
+        ]
     )
-     #  Bridge node
+
+    # Bridge
     bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
-            '/camera/image_raw@sensor_msgs/msg/Image@gz.msgs.Image'
+            '/camera/image_raw@sensor_msgs/msg/Image@gz.msgs.Image',
+            '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan',
+            '/imu@sensor_msgs/msg/Imu@gz.msgs.IMU',
         ],
         output='screen'
     )
+
     return LaunchDescription([
         rsp,
         gazebo,
