@@ -10,13 +10,21 @@ def generate_launch_description():
 
     package_name = 'my_rover'
 
+    # World file path
     world_file = os.path.join(
         get_package_share_directory(package_name),
         'world',
         'world.sdf'
     )
 
-    # Robot State Publisher
+    # Controller YAML path
+    controller_yaml = os.path.join(
+        get_package_share_directory(package_name),
+        'config',
+        'controller.yaml'
+    )
+
+    # Robot State Publisher launch
     rsp = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(
@@ -28,7 +36,7 @@ def generate_launch_description():
         launch_arguments={'use_sim_time': 'true'}.items()
     )
 
-    # Gazebo
+    # Gazebo launch
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(
@@ -37,27 +45,22 @@ def generate_launch_description():
                 'gz_sim.launch.py'
             )
         ),
-        launch_arguments={'gz_args': ['-r -v 4 ', world_file]}.items()
+        launch_arguments={'gz_args': f'-r -v 4 {world_file}'}.items()
     )
 
-    # Spawn robot (DELAYED)
-    spawn_entity = TimerAction(
-        period=5.0,   # wait 5 seconds
-        actions=[
-            Node(
-                package='ros_gz_sim',
-                executable='create',
-                arguments=[
-                    '-topic', 'robot_description',
-                    '-name', 'my_rover',
-                    '-z', '0.3'
-                ],
-                output='screen'
-            )
-        ]
+    # Spawn robot in Gazebo
+    spawn_entity = Node(
+        package='ros_gz_sim',
+        executable='create',
+        arguments=[
+            '-topic', 'robot_description',
+            '-name', 'my_rover',
+            '-z', '0.3'
+        ],
+        output='screen'
     )
 
-    # Bridge
+    # Bridge node (sensors)
     bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
@@ -69,9 +72,39 @@ def generate_launch_description():
         output='screen'
     )
 
+    # Controller spawners
+    joint_state_broadcaster_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["joint_state_broadcaster"],
+        output="screen",
+    )
+
+    diff_drive_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["diff_cont"],
+        output="screen",
+    )
+
+    #Delay controllers (VERY IMPORTANT)
+    delayed_joint_state = TimerAction(
+        period=3.0,
+        actions=[joint_state_broadcaster_spawner],
+    )
+
+    delayed_diff_drive = TimerAction(
+        period=5.0,
+        actions=[diff_drive_spawner],
+    )
+
     return LaunchDescription([
         rsp,
         gazebo,
         spawn_entity,
         bridge,
+
+        # Controllers (after spawn)
+        delayed_joint_state,
+        delayed_diff_drive,
     ])
