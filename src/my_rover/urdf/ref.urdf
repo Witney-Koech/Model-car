@@ -1,7 +1,7 @@
 <robot name="rover" version="1.0">
   <joint name="BackLeftMotor_link_joint" type="fixed">
     <origin rpy="1.57103 0.00000 0.00000" xyz="0.06461 -0.02565 -0.00216"/>
-    <parent link="Base_link"/>
+    <parent link="base_link"/>
     <child link="BackLeftMotor_link"/>
   </joint>
   <joint name="BackLeftWheel_link_joint" type="continuous">
@@ -13,42 +13,42 @@
   </joint>
   <joint name="Stand3_link_joint" type="fixed">
     <origin rpy="1.57103 0.00000 0.00000" xyz="0.07877 -0.02500 -0.00201"/>
-    <parent link="Base_link"/>
+    <parent link="base_link"/>
     <child link="Stand3_link"/>
   </joint>
   <joint name="Stand4_link_joint" type="fixed">
     <origin rpy="1.57103 0.00000 0.00000" xyz="0.07877 0.02500 -0.00197"/>
-    <parent link="Base_link"/>
+    <parent link="base_link"/>
     <child link="Stand4_link"/>
   </joint>
   <joint name="Stand5_link_joint" type="fixed">
     <origin rpy="1.57103 0.00000 0.00000" xyz="0.03288 0.02499 0.02658"/>
-    <parent link="Base_link"/>
+    <parent link="base_link"/>
     <child link="Stand5_link"/>
   </joint>
   <joint name="Stand6_link_joint" type="fixed">
     <origin rpy="1.57103 0.00000 0.00000" xyz="0.03288 -0.02501 0.02637"/>
-    <parent link="Base_link"/>
+    <parent link="base_link"/>
     <child link="Stand6_link"/>
   </joint>
   <joint name="Stand7_link_joint" type="fixed">
     <origin rpy="1.57103 0.00000 0.00000" xyz="0.07877 -0.02501 0.02634"/>
-    <parent link="Base_link"/>
+    <parent link="base_link"/>
     <child link="Stand7_link"/>
   </joint>
   <joint name="Stand9_link_joint" type="fixed">
     <origin rpy="1.57103 0.00000 0.00000" xyz="0.07877 0.02499 0.02753"/>
-    <parent link="Base_link"/>
+    <parent link="base_link"/>
     <child link="Stand9_link"/>
   </joint>
   <joint name="UpperBaseplate_link_joint" type="fixed">
     <origin rpy="-3.14135 0.00000 0.00000" xyz="0.05528 -0.00001 0.03818"/>
-    <parent link="Base_link"/>
+    <parent link="base_link"/>
     <child link="UpperBaseplate_link"/>
   </joint>
   <joint name="BackRightMotor_link_joint" type="fixed">
     <origin rpy="1.57103 0.00000 0.00000" xyz="0.06461 0.02565 -0.00201"/>
-    <parent link="Base_link"/>
+    <parent link="base_link"/>
     <child link="BackRightMotor_link"/>
   </joint>
   <joint name="BackRightWheel_link_joint" type="continuous">
@@ -59,13 +59,13 @@
     <axis xyz="0.00000 0.00000 1.00000"/>
   </joint>
   <joint name="lidar_joint" type="fixed">
-     <parent link="Base_link"/>
+     <parent link="base_link"/>
      <child link="lidar_link"/>
      <origin xyz="0.0 0.0 0.15" rpy="0 0 0"/>
   </joint>
   <joint name="FrontLeftMotor_link_joint" type="fixed">
     <origin rpy="1.57103 0.00000 0.00000" xyz="-0.06794 -0.02435 -0.00231"/>
-    <parent link="Base_link"/>
+    <parent link="base_link"/>
     <child link="FrontLeftMotor_link"/>
   </joint>
   <joint name="FrontLeftWheel_link_joint" type="continuous">
@@ -77,7 +77,7 @@
   </joint>
   <joint name="FrontRightMotor_link_joint" type="fixed">
     <origin rpy="1.57103 0.00000 0.00000" xyz="-0.06794 0.02565 -0.00206"/>
-    <parent link="Base_link"/>
+    <parent link="base_link"/>
     <child link="FrontRightMotor_link"/>
   </joint>
   <joint name="FrontRightWheel_link_joint" type="continuous">
@@ -89,20 +89,20 @@
   </joint>
   <joint name="Stand1_link_joint" type="fixed">
     <origin rpy="1.57103 0.00000 0.00000" xyz="-0.08265 0.02500 -0.00197"/>
-    <parent link="Base_link"/>
+    <parent link="base_link"/>
     <child link="Stand1_link"/>
   </joint>
   <joint name="camera_link_joint" type="fixed">
     <origin rpy="-1.57060 -1.57057 0" xyz="0.10 0.0 0.05"/>
-    <parent link="Base_link"/>
+    <parent link="base_link"/>
     <child link="camera_link"/>
   </joint>
   <joint name="Stand2_link_joint" type="fixed">
     <origin rpy="1.57103 0.00000 0.00000" xyz="-0.08265 -0.02500 -0.00199"/>
-    <parent link="Base_link"/>
+    <parent link="base_link"/>
     <child link="Stand2_link"/>
   </joint>
-  <link name="Base_link">
+  <link name="base_link">
     <collision name="Base_collision">
       <origin rpy="-1.57033 0.00000 0.00000" xyz="0.00000 0.00000 -0.00380"/>
       <geometry>
@@ -449,8 +449,7 @@
       <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 -0.00000"/>
       <geometry>
         <mesh filename="file://$(find my_rover)/meshes/stl/Assem1.017.stl" scale="0.00100 0.00100 0.00100"/>
-      </geometry>
-    </collision>
+      </geometry>    </collision>
     <inertial>
       <inertia ixx="0.00003" ixy="0.00000" ixz="0.00000" iyy="0.00000" iyz="-0.00000" izz="0.00003"/>
       <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>
@@ -477,6 +476,7 @@
   <hardware>
     <plugin>gz_ros2_control/GazeboSimSystem</plugin>
   </hardware>
+
 
   <joint name="FrontLeftWheel_link_joint">
     <command_interface name="velocity"/>
@@ -548,7 +548,7 @@
     </lidar>
     </sensor>
   </gazebo>
-  <gazebo reference="Base_link">
+  <gazebo reference="base_link">
   <sensor name="imu_sensor" type="imu">
     <always_on>true</always_on>
     <update_rate>50</update_rate>

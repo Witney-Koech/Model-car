@@ -78,28 +78,19 @@ def generate_launch_description():
     executable="spawner",
     arguments=[
         "joint_state_broadcaster",
-        "--controller-manager",
-        "/controller_manager"
     ],
-    parameters=[controller_yaml],
     output="screen",
 )
     
 
     diff_drive_spawner = Node(
-    package="controller_manager",
-    executable="spawner",
+    package="controller_manager",    executable="spawner",
     arguments=[
         "diff_cont",
-        "--controller-manager",
-        "/controller_manager"
     ],
-    parameters=[controller_yaml],
     output="screen",
 )
-    
-
-    #Delay controllers 
+     #Delay controllers 
     delayed_joint_state = TimerAction(
         period=8.0,
         actions=[joint_state_broadcaster_spawner],
@@ -115,8 +106,6 @@ def generate_launch_description():
         gazebo,
         spawn_entity,
         bridge,
-
-        # Controllers (after spawn)
-        delayed_joint_state,
-        delayed_diff_drive,
+        joint_state_broadcaster_spawner,
+        diff_drive_spawner,
     ])
