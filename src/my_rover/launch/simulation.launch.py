@@ -74,27 +74,39 @@ def generate_launch_description():
 
     # Controller spawners
     joint_state_broadcaster_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["joint_state_broadcaster"],
-        output="screen",
-    )
+    package="controller_manager",
+    executable="spawner",
+    arguments=[
+        "joint_state_broadcaster",
+        "--controller-manager",
+        "/controller_manager"
+    ],
+    parameters=[controller_yaml],
+    output="screen",
+)
+    
 
     diff_drive_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["diff_cont"],
-        output="screen",
-    )
+    package="controller_manager",
+    executable="spawner",
+    arguments=[
+        "diff_cont",
+        "--controller-manager",
+        "/controller_manager"
+    ],
+    parameters=[controller_yaml],
+    output="screen",
+)
+    
 
-    #Delay controllers (VERY IMPORTANT)
+    #Delay controllers 
     delayed_joint_state = TimerAction(
-        period=3.0,
+        period=8.0,
         actions=[joint_state_broadcaster_spawner],
     )
 
     delayed_diff_drive = TimerAction(
-        period=5.0,
+        period=10.0,
         actions=[diff_drive_spawner],
     )
 
